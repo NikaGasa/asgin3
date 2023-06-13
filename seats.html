@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .seat {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .seat.selected {
+            background-color: #ffcc00;
+        }
+
+        #selectedSeats {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Your Seat</h1>
+    <div id="seatmap">
+    <div class="seat" data-price="50" data-position="A1">A1</div>
+    <div class="seat" data-price="50" data-position="A2">A2</div>
+    <div class="seat" data-price="50" data-position="A3">A3</div>
+    <div class="seat" data-price="75" data-position="B1">B1</div>
+    <div class="seat" data-price="75" data-position="B2">B2</div>
+    <div class="seat" data-price="75" data-position="B3">B3</div>
+    <div class="seat" data-price="100" data-position="C1">C1</div>
+    <div class="seat" data-price="100" data-position="C2">C2</div>
+    <div class="seat" data-price="100" data-position="C3">C3</div>
+    </div>
+
+
+    <h1>balala</h1>
+    <div id="selectedseat"></div>
+
+    <script>
+        const seat = document.querySelectorAll("seat");
+        const selectedseat = document.querySelectorAll("selectedseat");
+
+        seat.forEach(seat => {
+            seat.addEventListener("click", () => {
+                seat.classList.toggle("selectedseat");
+                updateSelectedSeats();
+            })
+
+            function updateSelectedSeats() {
+                const selseat = document.querySelectorAll("seat.select");
+                let totalprice = 0;
+                let pos = "";
+
+                selseat.forEach(seat => {
+                    const price = seat.querySelector("data-price");
+                    const position = seat.querySelector("data-position");
+                    totalprice += price;
+                    pos += position;
+                })
+
+                
+            };
+        })
+    </script>
+</body>
+</html>
